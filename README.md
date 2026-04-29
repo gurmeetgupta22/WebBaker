@@ -1,4 +1,4 @@
-# AI Site Forge
+# WebBaker
 
 A polished mini no-code AI website builder. Type a website idea, choose a category and accent palette, generate a complete single-page website through a Node backend using OpenRouter, edit the preview inline, reorder sections, and export standalone HTML.
 
@@ -34,7 +34,7 @@ A polished mini no-code AI website builder. Type a website idea, choose a catego
 
    ```env
    OPENROUTER_API_KEY=your_openrouter_api_key_here
-   OPENROUTER_MODEL=anthropic/claude-3.5-sonnet
+   OPENROUTER_MODEL=deepseek/deepseek-chat
    PORT=3000
    ```
 
