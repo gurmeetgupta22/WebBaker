@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebBaker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Website builder controls">
+      <div class="brand-row">
+        <div class="brand-mark">A</div>
+        <div>
+          <h1>WebBaker</h1>
+          <p>Say, Shape, Share!!</p>
+        </div>
+        <button class="icon-button theme-toggle" id="themeToggle" type="button" aria-label="Toggle builder theme">🌙</button>
+      </div>
+
+      <section class="control-block prompt-block">
+        <div class="section-heading">
+          <span>Website Prompt</span>
+          <button id="samplePrompt" type="button">Sample</button>
+        </div>
+        <textarea id="promptInput" spellcheck="true" placeholder="Portfolio website for a creative developer who builds cinematic web experiences, with case studies, services, tech stack, and a strong contact section."></textarea>
+        <div class="action-row">
+          <button class="primary-button" id="generateBtn" type="button">Generate</button>
+          <button class="secondary-button" id="regenerateBtn" type="button" disabled>Regenerate</button>
+        </div>
+      </section>
+
+      <section class="control-block">
+        <div class="section-heading">
+          <span>Template</span>
+        </div>
+        <div class="template-grid" id="templateGrid">
+          <button class="template-pill active" type="button" data-template="Portfolio">Portfolio</button>
+          <button class="template-pill" type="button" data-template="SaaS">SaaS</button>
+          <button class="template-pill" type="button" data-template="Restaurant">Restaurant</button>
+          <button class="template-pill" type="button" data-template="Agency">Agency</button>
+          <button class="template-pill" type="button" data-template="Event">Event</button>
+          <button class="template-pill" type="button" data-template="Product">Product</button>
+        </div>
+      </section>
+
+      <section class="control-block">
+        <div class="section-heading">
+          <span>Accent Palette</span>
+        </div>
+        <div class="palette-grid" id="paletteGrid">
+          <button class="palette active" type="button" data-name="Electric Cyan" data-accent="#38e8ff" data-accent2="#ffcb47" style="--swatch:#38e8ff;--swatch2:#ffcb47" aria-label="Electric Cyan"></button>
+          <button class="palette" type="button" data-name="Solar Coral" data-accent="#ff6157" data-accent2="#ffd166" style="--swatch:#ff6157;--swatch2:#ffd166" aria-label="Solar Coral"></button>
+          <button class="palette" type="button" data-name="Acid Lime" data-accent="#ccff33" data-accent2="#28d7a6" style="--swatch:#ccff33;--swatch2:#28d7a6" aria-label="Acid Lime"></button>
+          <button class="palette" type="button" data-name="Signal Pink" data-accent="#ff4ecd" data-accent2="#4df3ff" style="--swatch:#ff4ecd;--swatch2:#4df3ff" aria-label="Signal Pink"></button>
+          <button class="palette" type="button" data-name="Copper Blue" data-accent="#e89b52" data-accent2="#5cd7ff" style="--swatch:#e89b52;--swatch2:#5cd7ff" aria-label="Copper Blue"></button>
+        </div>
+      </section>
+
+      <section class="control-block section-manager">
+        <div class="section-heading">
+          <span>Sections</span>
+          <span class="tiny-label">Drag to reorder</span>
+        </div>
+        <ul id="sectionList" class="section-list" aria-label="Generated section order">
+          <li class="muted-item">Generate a website to edit sections.</li>
+        </ul>
+      </section>
+
+      <section class="control-block tips">
+        <div class="section-heading">
+          <span>Builder Notes</span>
+        </div>
+        <p>Click generated text in the preview to edit it directly. Reordering sections and palette changes update the preview instantly without calling AI again.</p>
+      </section>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Live Preview</p>
+          <h2 id="previewTitle">Untitled generation</h2>
+        </div>
+        <div class="toolbar" aria-label="Preview controls">
+          <div class="viewport-tabs" id="viewportTabs">
+            <button class="active" type="button" data-size="desktop">Desktop</button>
+            <button type="button" data-size="tablet">Tablet</button>
+            <button type="button" data-size="mobile">Mobile</button>
+          </div>
+          <button class="secondary-button" id="exportBtn" type="button" disabled>Export Code</button>
+        </div>
+      </header>
+
+      <section class="preview-stage">
+        <div class="preview-frame desktop" id="previewFrameWrap">
+          <div class="empty-state" id="emptyState">
+            <div class="orbital-loader" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <h3>Describe a site and forge the first draft.</h3>
+            <p>Your generated page will appear here with editable text, responsive layout, motion, and exportable code.</p>
+          </div>
+          <div class="loading-state hidden" id="loadingState">
+            <div class="scanline"></div>
+            <div class="loading-card">
+              <span class="pulse-dot"></span>
+              <strong>Generating a custom website</strong>
+              <p>Designing sections, visual system, animations, and responsive CSS.</p>
+            </div>
+          </div>
+          <iframe id="previewFrame" title="Generated website preview" sandbox="allow-scripts allow-same-origin"></iframe>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
